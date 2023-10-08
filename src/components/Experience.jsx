@@ -83,7 +83,7 @@ const CameraHandler = ({ slideDistance }) => {
         0,
         0
       );
-    }, 20);
+    }, 200);
     return () => clearTimeout(resetTimeout);
   }, [viewport]);
 
