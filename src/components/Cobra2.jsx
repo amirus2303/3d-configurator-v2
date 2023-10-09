@@ -24,20 +24,22 @@ const Cobra2 = (props) => {
   useEffect(() => {
     configTexture(meshRef1);
   }, []);
-  const ratioScale = Math.min(1.2, Math.max(0.5, window.innerWidth / 1920));
+
   return (
     <>
-      <color attach="background" args={["#daa520"]} />
+      <color attach="background" args={["#c0ffe1"]} />
+      <ambientLight intensity={0.1} color="pink" />
       <PerspectiveCamera makeDefault position={[3, 3, 8]} near={0.5} />
       <OrbitControls
         autoRotate
         enablePan={false}
         maxPolarAngle={DEG2RAD * 75}
+        target={[0, 1, 0]}
         minDistance={6}
         maxDistance={10}
         autoRotateSpeed={0.5}
       />
-      <group {...props} dispose={null} scale={0.05}>
+      <group {...props} dispose={null} scale={0.05} position={[0,2,0]}>
         <mesh
           castShadow
           geometry={nodes.New_object.geometry}
