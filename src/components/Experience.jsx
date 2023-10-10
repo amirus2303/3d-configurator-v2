@@ -6,6 +6,7 @@ import { atom, useAtom } from 'jotai';
 
 const LazyBahut = React.lazy(() => import('./Bahut'));
 const LazyCobra2 = React.lazy(() => import('./Cobra2'));
+const LazyCeinture1 = React.lazy(() => import('./Ceinture1'));
 export const slideContext = atom(0);
 
 export const scenes = [
@@ -22,6 +23,14 @@ export const scenes = [
     mainColor: '#c0ffe1',
     name: 'Turbo Ventilo',
     description: 'Ventilateur éléctrique 500 watt',
+    price: 8000,
+    range: 150,
+  },
+  {
+    component: LazyCeinture1,
+    mainColor: '#c0ffe1',
+    name: 'Ceinture Valentino',
+    description: 'Ceinture cuir 80cm',
     price: 8000,
     range: 150,
   },

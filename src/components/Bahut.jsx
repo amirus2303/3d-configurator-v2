@@ -15,7 +15,6 @@ const Bahut = ({mainColor,...props}) => {
   const { nodes } = useGLTF("./bahut/bahut.glb");
   const texture1 = useTexture({
     map: "./bahut/map.jpg",
-    displacementMap: "./bahut/height.jpg",
     normalMap: "./bahut/normal.jpg",
     roughnessMap: "./bahut/roughness.jpg",
     metalnessMap: "./bahut/metal.jpg",
@@ -63,7 +62,7 @@ const Bahut = ({mainColor,...props}) => {
       <group
         {...props}
         dispose={null}
-        scale={0.03}
+        scale={ratioScale*0.03}
         position={[0,2.3,0]}
         rotation={[0, Math.PI, 0]}
        

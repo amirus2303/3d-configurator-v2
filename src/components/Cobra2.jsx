@@ -24,7 +24,7 @@ const Cobra2 = (props) => {
   useEffect(() => {
     configTexture(meshRef1);
   }, []);
-
+  const ratioScale = Math.min(1.2, Math.max(0.5, window.innerWidth / 1920));
   return (
     <>
       <color attach="background" args={["#c0ffe1"]} />
@@ -39,7 +39,7 @@ const Cobra2 = (props) => {
         maxDistance={10}
         autoRotateSpeed={0.5}
       />
-      <group {...props} dispose={null} scale={0.05} position={[0,2,0]}>
+      <group {...props} dispose={null} scale={ratioScale*0.05} position={[0,2,0]}>
         <mesh
           castShadow
           geometry={nodes.New_object.geometry}
