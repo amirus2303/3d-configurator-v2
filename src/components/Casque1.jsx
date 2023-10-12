@@ -2,28 +2,28 @@ import {
   OrbitControls,
   PerspectiveCamera,
   useGLTF,
-  useTexture
+  useTexture,
 } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 import configTexture from "../utils/configtexture";
 import { DEG2RAD } from "three/src/math/MathUtils";
 
-const Cobra2 = (props) => {
-  const { nodes } = useGLTF("./cobra_02/cobra_02.glb");
+const Casque1 = (props) => {
+  const { nodes } = useGLTF('./casque_01/casque_01.glb')
   const texture1 = useTexture({
-    map: "./cobra_02/textures/diffuse1.jpg",
-    normalMap: "./cobra_02/textures/normal1.jpg",
-    roughnessMap: "./cobra_02/textures/roughness1.jpg",
-    metalnessMap: "./cobra_02/textures/metalness1.jpg",
+    map: "./casque_01/textures/diffuse1.jpg",
+    normalMap: "./casque_01/textures/normal1.jpg",
+    roughnessMap: "./casque_01/textures/roughness1.jpg",
+    metalnessMap: "./casque_01/textures/metalness1.jpg",
   });
 
   const meshRef1 = useRef();
+  const meshRef2 = useRef();
 
   useEffect(() => {
     configTexture(meshRef1);
   }, []);
   const ratioScale = Math.min(1.2, Math.max(0.5, window.innerWidth / 1920));
-
   return (
     <>
       <color attach="background" args={["#c0ffe1"]} />
@@ -38,17 +38,17 @@ const Cobra2 = (props) => {
         maxDistance={10}
         autoRotateSpeed={0.5}
       />
-      <group {...props} dispose={null} scale={ratioScale * 0.05} position={[0, 2, 0]}>
-        <mesh
-          castShadow
-          geometry={nodes.New_object.geometry}
-          rotation={[Math.PI / 2, 0, 0]}
-        >
+      <group {...props} dispose={null} scale={ratioScale*12}>
+        <mesh castShadow receiveShadow geometry={nodes.casque_metal.geometry} material={nodes.casque_metal.material}  position={[0, 0.202, 0]} >
           <meshStandardMaterial ref={meshRef1} {...texture1} />
+        </mesh>
+        <mesh castShadow receiveShadow geometry={nodes.casque_other.geometry} material={nodes.casque_other.material}  position={[0, 0.202, 0]} >
+          <meshStandardMaterial ref={meshRef2} normalMap={texture1.normalMap} roughnessMap={texture1.roughnessMap} metalnessMap={texture1.metalnessMap}  color={"#ff0000"} />
         </mesh>
       </group>
     </>
-  );
-};
 
-export default Cobra2;
+  )
+}
+
+export default Casque1

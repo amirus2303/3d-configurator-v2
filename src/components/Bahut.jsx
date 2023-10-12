@@ -1,6 +1,4 @@
 import {
-  Environment,
-  Lightformer,
   OrbitControls,
   PerspectiveCamera,
   useGLTF,
@@ -11,7 +9,8 @@ import { DEG2RAD } from "three/src/math/MathUtils";
 import { useRef, useEffect } from "react";
 import configTexture from "../utils/configtexture";
 
-const Bahut = ({mainColor,...props}) => {
+
+const Bahut = (props) => {
   const { nodes } = useGLTF("./bahut/bahut.glb");
   const texture1 = useTexture({
     map: "./bahut/map.jpg",
@@ -62,12 +61,13 @@ const Bahut = ({mainColor,...props}) => {
       <group
         {...props}
         dispose={null}
-        scale={ratioScale*0.03}
-        position={[0,2.3,0]}
+        scale={ratioScale * 0.03}
+        position={[0, 2.3, 0]}
         rotation={[0, Math.PI, 0]}
-       
+
       >
         <mesh
+
           castShadow receiveShadow
           geometry={nodes.upper_01.geometry}
           material={nodes.upper_01.material}
@@ -144,28 +144,6 @@ const Bahut = ({mainColor,...props}) => {
         >
           <meshStandardMaterial ref={meshRef11} {...texture1} />
         </mesh>
-
-        <Environment>
-          <Lightformer
-            intensity={10}
-            color={"white"}
-            rotation-y={Math.PI / 2}
-            position={[-5, 1, 1]}
-            scale={[20, 1, 1]}
-          />
-          <Lightformer
-            intensity={20}
-            rotation-y={Math.PI / 2}
-            position={[-5, 4, -1]}
-            scale={[20, 0.9, 1]}
-          />
-          <Lightformer
-            intensity={50}
-            rotation-y={Math.PI / 2}
-            position={[10, 10, 10]}
-            scale={[20, 1, 1]}
-          />
-        </Environment>
       </group>
     </>
   );
