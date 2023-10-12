@@ -21,16 +21,9 @@ const Ceinture1 = (props) => {
         metalnessMap: "./ceinture_01/textures/metalness1.jpg",
     });
     const meshRef1 = useRef();
-    const meshRef2 = useRef();
-    const meshRef3 = useRef();
-    const meshRef4 = useRef();
-
 
     useEffect(() => {
         configTexture(meshRef1);
-        configTexture(meshRef2);
-        configTexture(meshRef3);
-        configTexture(meshRef4);
     }, []);
     const ratioScale = Math.min(1.2, Math.max(0.5, window.innerWidth / 1920));
     return (
@@ -48,21 +41,14 @@ const Ceinture1 = (props) => {
                 autoRotateSpeed={0.5}
             />
             <group {...props} dispose={null} scale={ratioScale * 35}>
-                <mesh castShadow receiveShadow geometry={nodes.vert_metalique.geometry} position={[-0.013, 0.001, 0.061]} >
+
+                <mesh castShadow receiveShadow geometry={nodes.ceinture.geometry} material={nodes.ceinture.material} position={[-0.006, 0.049, 0.004]} >
                     <meshStandardMaterial ref={meshRef1} {...texture1} />
                 </mesh>
-                <mesh castShadow receiveShadow geometry={nodes.ceinture.geometry} position={[-0.006, 0.049, 0.004]} >
-                    <meshStandardMaterial ref={meshRef2} {...texture1} />
+                <mesh castShadow receiveShadow geometry={nodes.boucle.geometry} material={nodes.boucle.material} position={[-0.062, 0.031, 0.004]} >
+                    <meshStandardMaterial metalness={0.5} roughness={0} color="#f1f1f1"  />
                 </mesh>
-                <mesh castShadow receiveShadow geometry={nodes.boucle.geometry} material={nodes.boucle.material} position={[-0.062, 0.031, 0.004]}  >
-                    <meshStandardMaterial metalness={0.5} roughness={0} color="#f1f1f1" />
-                </mesh>
-                <mesh castShadow receiveShadow geometry={nodes.gris_metalique.geometry} position={[-0.013, 0.01, 0.061]} >
-                    <meshStandardMaterial ref={meshRef3} {...texture1} />
-                </mesh>
-                <mesh castShadow receiveShadow geometry={nodes.rouge_metalique.geometry} position={[-0.001, 0.015, 0.075]} >
-                    <meshStandardMaterial ref={meshRef4} {...texture1} />
-                </mesh>
+
                 <Environment>
                     <Lightformer
                         intensity={10}

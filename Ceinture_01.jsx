@@ -10,8 +10,8 @@ export function Model(props) {
   const { nodes, materials } = useGLTF('/ceinture_01.glb')
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes['84746180__111904P'].geometry} material={nodes['84746180__111904P'].material} position={[-0.021, 0.047, -0.027]} rotation={[0, 1.262, 0]} scale={0.01} />
-      <mesh geometry={nodes['67364666__2810P'].geometry} material={nodes['67364666__2810P'].material} position={[-0.034, 0.047, 0.025]} rotation={[0, 1.262, -0.217]} scale={0.01} />
+      <mesh geometry={nodes.ceinture.geometry} material={nodes.ceinture.material} position={[-0.006, 0.049, 0.004]} />
+      <mesh geometry={nodes.boucle.geometry} material={nodes.boucle.material} position={[-0.062, 0.031, 0.004]} />
     </group>
   )
 }
