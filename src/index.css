@@ -12,3 +12,10 @@
 body {
   margin: 0;
 }
+
+.picker .react-colorful {
+  position: absolute;
+  z-index: 10;
+  width: 100px;
+  height: 100px;
+}

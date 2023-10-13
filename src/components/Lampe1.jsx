@@ -33,7 +33,6 @@ const Lampe1 = (props) => {
       <ambientLight intensity={0.1} color="pink" />
       <PerspectiveCamera makeDefault position={[3, 3, 8]} near={0.5} />
       <OrbitControls
-        autoRotate
         enablePan={false}
         maxPolarAngle={DEG2RAD * 75}
         minDistance={6}

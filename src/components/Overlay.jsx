@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { scenes } from "./Experience";
+import { scenes, showColorPicker } from "./Experience";
 import { slideContext } from "./Experience";
 import { useAtom } from "jotai";
-import logo from '../assets/logo-devbox.png'
+import logo from "../assets/logo-devbox.png";
 export const Overlay = () => {
-    const [slide, setSlide] = useAtom(slideContext)
+  const [showPicker, setShowPicker] = useAtom(showColorPicker);
+  const [slide, setSlide] = useAtom(slideContext);
   const [displaySlide, setDisplaySlide] = useState(slide);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -27,12 +28,13 @@ export const Overlay = () => {
           visible ? "" : "opacity-0"
         } transition-opacity duration-1000`}
       >
-      <img src={logo} alt="" className="w-40 mx-auto mt-8" />
+        <img src={logo} alt="" className="w-40 mx-auto mt-8" />
         <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-between flex-1 p-4">
           <svg
-            onClick={() =>
-              setSlide((prev) => (prev > 0 ? prev - 1 : scenes.length - 1))
-            }
+            onClick={() => {
+              setSlide((prev) => (prev > 0 ? prev - 1 : scenes.length - 1));
+              setShowPicker(false);
+            }}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -54,9 +56,10 @@ export const Overlay = () => {
             strokeWidth={1.5}
             stroke="currentColor"
             className="w-10 h-10 transition-opacity cursor-pointer pointer-events-auto hover:opacity-60"
-            onClick={() =>
-              setSlide((prev) => (prev < scenes.length - 1 ? prev + 1 : 0))
-            }
+            onClick={() => {
+              setSlide((prev) => (prev < scenes.length - 1 ? prev + 1 : 0));
+              setShowPicker(false);
+            }}
           >
             <path
               strokeLinecap="round"

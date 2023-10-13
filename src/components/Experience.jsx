@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import {
   CameraControls,
   Grid,
@@ -24,6 +24,7 @@ const LazyTricot1 = React.lazy(() => import("./Tricot1"));
 const LazyMontre1 = React.lazy(() => import("./Montre1"));
 
 export const slideContext = atom(0);
+export const showColorPicker = atom(false);
 
 export const scenes = [
   {
@@ -83,28 +84,28 @@ export const scenes = [
     range: 100,
   },
 ];
-
 // export const scenes = [
-//     {
-//         component: LazyBahut,
-//         mainColor: '#f9c0ff',
-//         name: 'Bahut',
-//         description: 'Bahut home 4 portes 2',
-//         price: 72000,
-//         range: 100,
-//     },
-//     {
-//         component: LazyCeinture1,
-//         mainColor: '#c0ffe1',
-//         name: 'Ceinture Valentino',
-//         description: 'Ceinture cuir 80cm',
-//         price: 8000,
-//         range: 150,
-//     }
+//   {
+//     component: LazyCobra2,
+//     mainColor: "#c0ffe1",
+//     name: "Turbo Ventilo",
+//     description: "Ventilateur éléctrique 500 watt",
+//     price: 8000,
+//     range: 150,
+//   },
+//   {
+//     component: LazyMontre1,
+//     mainColor: "#99ccff",
+//     name: "Montre Gladius",
+//     description: "Smart display",
+//     price: 14000,
+//     range: 100,
+//   },
 // ];
 
-const CameraHandler = ({ slideDistance }) => {
-  const { viewport } = useThree();
+const CameraHandler = ({ slideDistance, viewport }) => {
+  //const { viewport } = useThree();
+  console.log(viewport.width);
   const cameraControls = useRef();
   const [slide] = useAtom(slideContext);
   const lastSlide = useRef(0);
@@ -180,12 +181,13 @@ const CameraHandler = ({ slideDistance }) => {
 
 const Experience = () => {
   const viewport = useThree((state) => state.viewport);
+  const [initialViewPort] = useState(viewport); //Pour garder tjrs le mem viewport meme si la camera bouge
 
   return (
     <>
       {/* <Perf /> */}
       <ambientLight intensity={0.2} />
-      <CameraHandler slideDistance={1} />
+      <CameraHandler slideDistance={1} viewport={initialViewPort} />
       <Grid
         position-y={-viewport.height / 2}
         sectionSize={1}
@@ -206,8 +208,13 @@ const Experience = () => {
         }
       >
         {scenes.map((scene, index) => (
-          <mesh key={index} position={[index * (viewport.width + 1), 0, 0]}>
-            <planeGeometry args={[viewport.width, viewport.height]} />
+          <mesh
+            key={index}
+            position={[index * (initialViewPort.width + 1), 0, 0]}
+          >
+            <planeGeometry
+              args={[initialViewPort.width, initialViewPort.height]}
+            />
             <meshBasicMaterial toneMapped={false}>
               <RenderTexture attach="map">
                 <scene.component />

@@ -9,7 +9,6 @@ import { DEG2RAD } from "three/src/math/MathUtils";
 import { useRef, useEffect } from "react";
 import configTexture from "../utils/configtexture";
 
-
 const Bahut = (props) => {
   const { nodes } = useGLTF("./bahut/bahut.glb");
   const texture1 = useTexture({
@@ -64,81 +63,90 @@ const Bahut = (props) => {
         scale={ratioScale * 0.03}
         position={[0, 2.3, 0]}
         rotation={[0, Math.PI, 0]}
-
       >
         <mesh
-
-          castShadow receiveShadow
+          castShadow
+          receiveShadow
           geometry={nodes.upper_01.geometry}
           material={nodes.upper_01.material}
         >
           <meshStandardMaterial ref={meshRef1} {...texture1} />
         </mesh>
         <mesh
-          castShadow receiveShadow
+          castShadow
+          receiveShadow
           geometry={nodes.Lateral_01.geometry}
           material={nodes.Lateral_01.material}
         >
           <meshStandardMaterial ref={meshRef2} {...texture1} />
         </mesh>
         <mesh
-          castShadow receiveShadow
+          castShadow
+          receiveShadow
           geometry={nodes.Lateral_02.geometry}
           material={nodes.Lateral_02.material}
         >
           <meshStandardMaterial ref={meshRef3} {...texture1} />
         </mesh>
         <mesh
-          castShadow receiveShadow
+          castShadow
+          receiveShadow
           geometry={nodes.Front_03.geometry}
           material={nodes.Front_03.material}
         >
           <meshStandardMaterial ref={meshRef4} {...texture1} />
         </mesh>
         <mesh
-          castShadow receiveShadow
+          castShadow
+          receiveShadow
           geometry={nodes.Front_04.geometry}
           material={nodes.Front_04.material}
         >
           <meshStandardMaterial ref={meshRef5} {...texture1} />
         </mesh>
         <mesh
-          castShadow receiveShadow
+          castShadow
+          receiveShadow
           geometry={nodes.Front_05.geometry}
           material={nodes.Front_05.material}
         >
           <meshStandardMaterial ref={meshRef6} {...texture1} />
         </mesh>
         <mesh
-          castShadow receiveShadow
+          castShadow
+          receiveShadow
           geometry={nodes.Front_01.geometry}
           material={nodes.Front_01.material}
         >
           <meshStandardMaterial ref={meshRef7} {...texture1} />
         </mesh>
         <mesh
-          castShadow receiveShadow
+          castShadow
+          receiveShadow
           geometry={nodes.Front_02.geometry}
           material={nodes.Front_02.material}
         >
           <meshStandardMaterial ref={meshRef8} {...texture1} />
         </mesh>
         <mesh
-          castShadow receiveShadow
+          castShadow
+          receiveShadow
           geometry={nodes.Legs.geometry}
           material={nodes.Legs.material}
         >
           <meshStandardMaterial ref={meshRef9} {...texture1} />
         </mesh>
         <mesh
-          castShadow receiveShadow
+          castShadow
+          receiveShadow
           geometry={nodes.down_01.geometry}
           material={nodes.down_01.material}
         >
           <meshStandardMaterial ref={meshRef10} {...texture1} />
         </mesh>
         <mesh
-          castShadow receiveShadow
+          castShadow
+          receiveShadow
           geometry={nodes.Back_01.geometry}
           material={nodes.Back_01.material}
         >

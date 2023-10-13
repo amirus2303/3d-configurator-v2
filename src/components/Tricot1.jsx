@@ -29,7 +29,7 @@ const Tricot1 = (props) => {
 
   return (
     <>
-      <color attach="background" args={["#99d299"]} />
+      <color attach="background" args={["#66bc66"]} />
       <ambientLight intensity={0.1} color="pink" />
       <PerspectiveCamera makeDefault position={[3, 3, 8]} near={0.5} />
       <OrbitControls

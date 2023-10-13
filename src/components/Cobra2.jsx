@@ -2,7 +2,7 @@ import {
   OrbitControls,
   PerspectiveCamera,
   useGLTF,
-  useTexture
+  useTexture,
 } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 import configTexture from "../utils/configtexture";
@@ -30,7 +30,6 @@ const Cobra2 = (props) => {
       <ambientLight intensity={0.1} color="pink" />
       <PerspectiveCamera makeDefault position={[3, 3, 8]} near={0.5} />
       <OrbitControls
-        autoRotate
         enablePan={false}
         maxPolarAngle={DEG2RAD * 75}
         target={[0, 1, 0]}
@@ -38,7 +37,12 @@ const Cobra2 = (props) => {
         maxDistance={10}
         autoRotateSpeed={0.5}
       />
-      <group {...props} dispose={null} scale={ratioScale * 0.05} position={[0, 2, 0]}>
+      <group
+        {...props}
+        dispose={null}
+        scale={ratioScale * 0.05}
+        position={[0, 2, 0]}
+      >
         <mesh
           castShadow
           geometry={nodes.New_object.geometry}
