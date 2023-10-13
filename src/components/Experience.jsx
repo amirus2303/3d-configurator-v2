@@ -21,6 +21,7 @@ const LazyCeinture1 = React.lazy(() => import("./Ceinture1"));
 const LazyCasque1 = React.lazy(() => import("./Casque1"));
 const LazyLampe1 = React.lazy(() => import("./Lampe1"));
 const LazyTricot1 = React.lazy(() => import("./Tricot1"));
+const LazyMontre1 = React.lazy(() => import("./Montre1"));
 
 export const slideContext = atom(0);
 
@@ -70,6 +71,14 @@ export const scenes = [
     mainColor: "#99d299",
     name: "Maillot EN",
     description: "Zellidj Algérie",
+    price: 14000,
+    range: 100,
+  },
+  {
+    component: LazyMontre1,
+    mainColor: "#99ccff",
+    name: "Montre Gladius",
+    description: "Smart display",
     price: 14000,
     range: 100,
   },
@@ -174,7 +183,7 @@ const Experience = () => {
 
   return (
     <>
-      <Perf />
+      {/* <Perf /> */}
       <ambientLight intensity={0.2} />
       <CameraHandler slideDistance={1} />
       <Grid
